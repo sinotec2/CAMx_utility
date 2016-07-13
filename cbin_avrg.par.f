@@ -99,6 +99,13 @@ C
         close(ird)
         if(ird.eq.narg-1)exit
         ird=ird+1
+        READ (ird+10,END=33) yyjul(it),tim(it), NDATE, TAVE
+        !print*,ird, yyjul(it),tim(it), NDATE, TAVE
+        DO  L=1,NOSPEC
+          DO  K=1,NOZ
+            READ(10+ird)ISEG,(MRUNID(I),I=1,10),(A1(ird,I,K,L,it),I=1,NXY)
+          enddo
+        enddo
       enddo
       yyjul(NT+1)=yyjul(NT)
       tim(NT+1)=tim(NT)+1
